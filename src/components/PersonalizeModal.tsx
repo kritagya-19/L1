@@ -19,6 +19,23 @@ export const PersonalizeModal: React.FC<PersonalizeModalProps> = ({
   const [formData, setFormData] = useState<LoveMemory>({ ...memory });
   const [copied, setCopied] = useState(false);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      const originalOverflow = document.body.style.overflow;
+      const originalOverscroll = document.body.style.overscrollBehavior;
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.overscrollBehavior = 'none';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        document.body.style.overscrollBehavior = originalOverscroll;
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handlePresetSelect = (presetId: string) => {
@@ -68,11 +85,11 @@ export const PersonalizeModal: React.FC<PersonalizeModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-3xl max-w-xl w-full p-4 sm:p-8 max-h-[90vh] overflow-y-auto romantic-scrollbar shadow-2xl border border-pink-100 my-8 relative"
+        className="bg-white rounded-3xl max-w-xl w-full p-4 sm:p-8 max-h-[86vh] sm:max-h-[88vh] overflow-y-auto romantic-scrollbar shadow-2xl border border-pink-100 my-auto relative overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

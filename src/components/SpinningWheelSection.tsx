@@ -95,6 +95,23 @@ export const SpinningWheelSection: React.FC<SpinningWheelSectionProps> = ({
   const [claimedNotice, setClaimedNotice] = useState<string | null>(null);
   const audioIntervalRef = useRef<number | null>(null);
 
+  React.useEffect(() => {
+    if (showVoucher) {
+      const scrollY = window.scrollY;
+      const originalOverflow = document.body.style.overflow;
+      const originalOverscroll = document.body.style.overscrollBehavior;
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.overscrollBehavior = 'none';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        document.body.style.overscrollBehavior = originalOverscroll;
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [showVoucher]);
+
   const numSlices = WHEEL_GIFTS.length;
   const sliceAngle = 360 / numSlices; // 51.42857°
 
@@ -419,11 +436,11 @@ export const SpinningWheelSection: React.FC<SpinningWheelSectionProps> = ({
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none animate-fade-in"
           onClick={() => setShowVoucher(false)}
         >
           <div
-            className="bg-[#FFFDF9] rounded-[32px] p-6 sm:p-8 max-w-md w-full shadow-2xl border-2 border-rose-300 relative text-center animate-scale-up"
+            className="bg-[#FFFDF9] rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 max-w-md w-full shadow-2xl border-2 border-rose-300 relative text-center animate-scale-up my-auto max-h-[88vh] overflow-y-auto romantic-scrollbar overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

@@ -25,6 +25,24 @@ export const LoveLetterEnvelope: React.FC<LoveLetterEnvelopeProps> = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const [floatingSparkles, setFloatingSparkles] = useState<{ id: number; x: number; y: number }[]>([]);
 
+  // Prevent background page from scrolling or jumping while reading the love letter
+  React.useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      const originalOverflow = document.body.style.overflow;
+      const originalOverscroll = document.body.style.overscrollBehavior;
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.overscrollBehavior = 'none';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        document.body.style.overscrollBehavior = originalOverscroll;
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
+
   const senderInitial = (senderName || 'D').trim().charAt(0).toUpperCase();
 
   const handleOpenEnvelope = () => {
@@ -203,35 +221,35 @@ export const LoveLetterEnvelope: React.FC<LoveLetterEnvelopeProps> = ({
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fade-in"
+          className="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-hidden overscroll-none animate-fade-in"
           onClick={handleCloseEnvelope}
         >
           {/* Letter Container matching screenshot 4 & 5 */}
           <div
-            className="relative w-full max-w-xl bg-[#FDF9F7] rounded-[28px] sm:rounded-[34px] shadow-[0_25px_80px_rgba(0,0,0,0.35)] overflow-hidden my-4 border border-rose-100 flex flex-col max-h-[90vh] animate-scale-up"
+            className="relative w-full max-w-xl bg-[#FDF9F7] rounded-[24px] sm:rounded-[34px] shadow-[0_25px_80px_rgba(0,0,0,0.45)] overflow-hidden my-auto border border-rose-100 flex flex-col max-h-[86vh] sm:max-h-[88vh] animate-scale-up overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top burgundy accent header strip matching screenshot */}
-            <div className="w-full h-3.5 bg-[#8C103B] shrink-0" />
+            <div className="w-full h-3 sm:h-3.5 bg-[#8C103B] shrink-0" />
 
             {/* Circular Close Button (x) in top right matching screenshot */}
             <button
               onClick={handleCloseEnvelope}
-              className="absolute top-6 right-6 z-20 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-500 hover:text-slate-800 shadow-sm border border-slate-200/80 flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-600 hover:text-slate-900 shadow-md border border-slate-200/80 flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
               aria-label="Close letter"
             >
               <X className="w-4 h-4" />
             </button>
 
             {/* Letter Content with Lined Stationery Background matching screenshot 4 & 5 */}
-            <div className="p-4 sm:p-8 md:p-10 overflow-y-auto romantic-scrollbar lined-paper relative">
+            <div className="p-5 sm:p-8 md:p-10 overflow-y-auto romantic-scrollbar lined-paper relative overscroll-contain flex-1">
               {/* Partner Name Salutation matching screenshot 5 */}
-              <h2 className="font-script text-3xl sm:text-4xl md:text-5xl text-[#6B0F2B] font-bold tracking-wide mb-4 sm:mb-6">
+              <h2 className="font-script text-3xl sm:text-4xl md:text-5xl text-[#6B0F2B] font-bold tracking-wide mb-4 sm:mb-6 pr-10 sm:pr-0">
                 {partnerName} ,
               </h2>
 
               {/* Letter Paragraphs in handwritten font matching screenshots */}
-              <div className="space-y-5 sm:space-y-6 text-[#2D121B] font-script text-[19px] sm:text-[22px] md:text-[25px] leading-[36px] sm:leading-[38px] md:leading-[40px]">
+              <div className="space-y-4 sm:space-y-6 text-[#2D121B] font-script text-[18px] sm:text-[22px] md:text-[25px] leading-[32px] sm:leading-[38px] md:leading-[40px]">
                 {letterParagraphs.map((para, index) => (
                   <p key={index} className="tracking-wide">
                     {para}
@@ -240,27 +258,27 @@ export const LoveLetterEnvelope: React.FC<LoveLetterEnvelopeProps> = ({
 
                 {/* Highlighted Lifetime Dedication */}
                 {letterQuote && (
-                  <p className="my-5 sm:my-6 text-[#7B1133] font-script text-xl sm:text-2xl md:text-[28px] font-bold tracking-wide leading-relaxed pl-3 border-l-2 border-rose-300">
+                  <p className="my-4 sm:my-6 text-[#7B1133] font-script text-xl sm:text-2xl md:text-[28px] font-bold tracking-wide leading-relaxed pl-3 border-l-2 border-rose-300">
                     "{letterQuote}"
                   </p>
                 )}
 
                 {/* Date / Time Notice */}
                 {letterDateNotice && (
-                  <p className="tracking-wide font-script text-[19px] sm:text-[22px] md:text-[25px] text-[#3D1420] pt-2">
+                  <p className="tracking-wide font-script text-[18px] sm:text-[22px] md:text-[25px] text-[#3D1420] pt-2">
                     {letterDateNotice}
                   </p>
                 )}
               </div>
 
               {/* Sign-off section matching screenshot 4 */}
-              <div className="mt-8 pt-2 text-right">
+              <div className="mt-7 sm:mt-8 pt-2 text-right">
                 <span className="font-script text-2xl sm:text-3xl md:text-4xl text-[#9C1B48] font-bold inline-block border-b-2 border-rose-300/80 pb-0.5">
                   {letterSignoff}
                 </span>
 
                 {/* Centered heart divider matching screenshot: — ♥ — */}
-                <div className="flex items-center justify-center gap-4 mt-8 mb-2 text-rose-300" aria-hidden="true">
+                <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8 mb-2 text-rose-300" aria-hidden="true">
                   <div className="w-14 h-px bg-rose-200" />
                   <Heart className="w-3.5 h-3.5 fill-[#9C1B48] text-[#9C1B48]" />
                   <div className="w-14 h-px bg-rose-200" />

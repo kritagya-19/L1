@@ -111,26 +111,26 @@ export default function App() {
           />
         </section>
 
-        {/* SECTION 4: 6 THINGS I LOVE MOST ABOUT YOU */}
+        {/* SECTION 4: ALTERNATE UNIVERSES OF US (LEGO & BEYOND) */}
+        <AlternateUniverseSection />
+
+        {/* SECTION 5: 6 THINGS I LOVE MOST ABOUT YOU */}
         <ReasonsToLoveSection
           partnerName={memory.partnerName}
           reasons={memory.reasonsToLove || []}
         />
 
-        {/* SECTION 5: SPIN FOR YOUR GIFT */}
+        {/* SECTION 6: SPIN FOR YOUR GIFT */}
         <SpinningWheelSection
           partnerName={memory.partnerName}
           senderName={memory.senderName}
           onWinPrize={triggerCelebration}
         />
 
-        {/* SECTION 6: SONGS THAT REMIND ME OF YOU */}
+        {/* SECTION 7: SONGS THAT REMIND ME OF YOU */}
         <SongsRemindOfYouSection
           partnerName={memory.partnerName}
         />
-
-        {/* SECTION 7: ALTERNATE UNIVERSES OF US (LEGO & BEYOND) */}
-        <AlternateUniverseSection />
 
         {/* SECTION 8: A FEW OF MY FAVOURITE US (LAST SECTION) */}
         <FavouriteUsSection />

@@ -18,7 +18,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
   subtitle,
   photoUrl,
   dateBadge: _dateBadge,
-  secretNote,
+  secretNote: _secretNote,
   onReveal,
   isRevealed,
   setIsRevealed,
@@ -278,31 +278,14 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
             ref={containerRef}
             className="relative w-full h-full rounded-2xl overflow-hidden select-none bg-rose-950"
           >
-            {/* UNDERNEATH LAYER: The Revealed Memory Photo */}
-            <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-b from-[#2B0E18] to-[#15050B] text-white p-4">
-              {/* Photo Image or Romantic Illustration */}
-              <div className="relative w-full h-[74%] rounded-xl overflow-hidden shadow-inner group">
-                <img
-                  src={photoUrl}
-                  alt="Our favourite memory"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-
-              {/* Romantic memory quote note */}
-              <div className="pt-2 text-left px-1">
-                <p className="font-script text-rose-100 text-lg sm:text-xl leading-snug">
-                  "{secretNote}"
-                </p>
-                <div className="mt-1 flex items-center justify-between text-[11px] text-rose-300/80">
-                  <span className="flex items-center gap-1">
-                    <Heart className="w-3 h-3 fill-rose-500 text-rose-500" />
-                    Always with you
-                  </span>
-                  <span>Forever & Always</span>
-                </div>
-              </div>
+            {/* UNDERNEATH LAYER: The Revealed Memory Photo (Full-bleed image, no text) */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden bg-rose-950">
+              <img
+                src={photoUrl}
+                alt="Our favourite memory"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
             </div>
 
             {/* TOP SCRATCH CANVAS LAYER */}

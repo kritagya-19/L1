@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { romanticAudio } from '../utils/audio';
 
 interface ScratchCardProps {
@@ -246,34 +246,28 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 sm:px-6">
+    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6">
       {/* White rounded card container matching screenshot */}
-      <div className="bg-white rounded-[32px] sm:rounded-[38px] shadow-[0_24px_70px_-15px_rgba(244,114,182,0.22)] border border-pink-100/60 p-6 sm:p-12 text-center relative transition-all">
-        {/* Badge: SCRATCH TO REVEAL */}
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#FCE7F0] text-[#BE185D] text-xs font-semibold tracking-wider uppercase mb-5 select-none shadow-xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#BE185D]" />
-          <span>SCRATCH TO REVEAL</span>
-        </div>
-
+      <div className="bg-white rounded-[32px] sm:rounded-[38px] shadow-[0_24px_70px_-15px_rgba(244,114,182,0.22)] border border-pink-100/60 p-5 sm:px-12 sm:py-9 text-center relative transition-all">
         {/* Heading matching screenshot */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A21448] tracking-tight mb-2.5">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A21448] tracking-tight mb-2">
           {title}
         </h2>
 
         {/* Subtitle matching screenshot */}
-        <p className="text-[#6D4250] text-sm sm:text-base font-normal max-w-md mx-auto mb-4 leading-relaxed">
+        <p className="text-[#6D4250] text-sm sm:text-base font-normal max-w-lg mx-auto mb-3.5 leading-relaxed">
           {subtitle}
         </p>
 
         {/* Delicate divider with heart matching screenshot: — ♡ — */}
-        <div className="flex items-center justify-center gap-3 my-5 text-[#FDA4AF]" aria-hidden="true">
+        <div className="flex items-center justify-center gap-3 my-4 text-[#FDA4AF]" aria-hidden="true">
           <div className="w-12 h-px bg-pink-200" />
           <Heart className="w-3.5 h-3.5 text-[#F43F5E] fill-none stroke-[1.8]" />
           <div className="w-12 h-px bg-pink-200" />
         </div>
 
-        {/* Scratch Card Frame */}
-        <div className="relative mx-auto my-3 w-full max-w-[340px] sm:max-w-[360px] aspect-[3/4.2] rounded-3xl overflow-hidden p-2.5 bg-gradient-to-b from-pink-50 to-rose-100 shadow-[0_12px_36px_rgba(219,39,119,0.14)] ring-1 ring-pink-200/70">
+        {/* Scratch Card Frame - increased width, slightly reduced height */}
+        <div className="relative mx-auto my-2 w-full max-w-[380px] sm:max-w-[420px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2 sm:p-2.5 bg-gradient-to-b from-pink-50 to-rose-100 shadow-[0_12px_36px_rgba(219,39,119,0.14)] ring-1 ring-pink-200/70">
           <div
             ref={containerRef}
             className="relative w-full h-full rounded-2xl overflow-hidden select-none bg-rose-950"

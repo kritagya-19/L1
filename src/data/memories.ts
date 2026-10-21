@@ -211,7 +211,7 @@ export const INITIAL_LOVE_MEMORY: LoveMemory = {
   milestoneNote: "Four years in November. I couldn't wait, so I made you this.",
   memoryTitle: 'Scratch to see my favourite night',
   memorySubtitle: "Your birthday, the paper crown, and you still won at Catan.",
-  memoryPhotoUrl: birthdayPaperCrownIllustration,
+  memoryPhotoUrl: '/assets/scratch_custom.jpg',
   memoryPhotoAlt: 'Maya laughing wearing a paper crown at Catan night',
   dateBadge: 'November 14 • 11:42 PM',
   memorySecretNote: 'You are a truly wonderful and powerful person. You carry such beautiful, divine feminine energy. There is something so powerful, graceful, and divine about you that I deeply admire.',
@@ -294,7 +294,7 @@ export const PRESET_MEMORIES: PresetMemory[] = [
     subtitle: "Your birthday, the paper crown, and you still won at Catan.",
     dateBadge: 'November 14 • 11:42 PM',
     secretNote: 'You laughed so hard your paper crown tilted, yet you still managed to win Catan. I fell in love with you all over again that night.',
-    photoUrl: birthdayPaperCrownIllustration,
+    photoUrl: '/assets/scratch_custom.jpg',
   },
   {
     id: 'sunset',

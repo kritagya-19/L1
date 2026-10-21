@@ -96,7 +96,7 @@ const UNIVERSES: UniverseItem[] = [
     title: 'Us in a Ghibli Dream',
     subtitle: 'Windy grassy hills, calm blue waters, and sharing warm steamed buns.',
     note: 'I would ride that floating sky-train across the ocean just to bring you fresh warm bread before dusk.',
-    imageSrc: ghibliSvg,
+    imageSrc: '/assets/ghibli_custom.jpg',
     alt: 'Anime Ghibli style couple on a windy green hill',
   },
   {
@@ -105,7 +105,7 @@ const UNIVERSES: UniverseItem[] = [
     title: 'Us in Knitted Wool',
     subtitle: 'Cozy knitted sweaters, oversized mugs, and tiny handmade boots.',
     note: 'Stitched together stitch by stitch. Every little yarn thread inevitably leads straight back to you.',
-    imageSrc: woolSvg,
+    imageSrc: '/assets/knitwool_custom.jpg',
     alt: 'Knitted felt couple holding a tiny heart',
   },
   {
@@ -114,7 +114,7 @@ const UNIVERSES: UniverseItem[] = [
     title: 'Us, Adrift in the Stars',
     subtitle: 'Floating through nebulas in retro space suits, tethered by one pink cord.',
     note: 'In an infinite cosmos with billions of galaxies, gravity will always pull me straight back to your orbit.',
-    imageSrc: cosmicSvg,
+    imageSrc: '/assets/adrift_custom.jpg',
     alt: 'Two astronauts connected by a glowing heart tether in space',
   },
 ];
@@ -174,6 +174,7 @@ export const AlternateUniverseSection: React.FC = () => {
             key={current.id}
             src={current.imageSrc}
             alt={current.alt}
+            referrerPolicy="no-referrer"
             onClick={handlePhotoClick}
             className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer"
           />

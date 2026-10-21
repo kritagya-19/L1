@@ -246,28 +246,28 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6">
+    <div className="w-full max-w-xl mx-auto px-4 sm:px-6">
       {/* White rounded card container matching screenshot */}
-      <div className="bg-white rounded-[32px] sm:rounded-[38px] shadow-[0_24px_70px_-15px_rgba(244,114,182,0.22)] border border-pink-100/60 p-5 sm:px-12 sm:py-9 text-center relative transition-all">
+      <div className="bg-white rounded-[32px] sm:rounded-[36px] shadow-[0_24px_70px_-15px_rgba(244,114,182,0.22)] border border-pink-100/60 p-5 sm:px-8 sm:py-8 text-center relative transition-all">
         {/* Heading matching screenshot */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A21448] tracking-tight mb-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#A21448] tracking-tight mb-2">
           {title}
         </h2>
 
         {/* Subtitle matching screenshot */}
-        <p className="text-[#6D4250] text-sm sm:text-base font-normal max-w-lg mx-auto mb-3.5 leading-relaxed">
+        <p className="text-[#6D4250] text-sm sm:text-base font-normal max-w-md mx-auto mb-3 leading-relaxed">
           {subtitle}
         </p>
 
         {/* Delicate divider with heart matching screenshot: — ♡ — */}
-        <div className="flex items-center justify-center gap-3 my-4 text-[#FDA4AF]" aria-hidden="true">
+        <div className="flex items-center justify-center gap-3 my-3.5 text-[#FDA4AF]" aria-hidden="true">
           <div className="w-12 h-px bg-pink-200" />
           <Heart className="w-3.5 h-3.5 text-[#F43F5E] fill-none stroke-[1.8]" />
           <div className="w-12 h-px bg-pink-200" />
         </div>
 
-        {/* Scratch Card Frame - increased width, slightly reduced height */}
-        <div className="relative mx-auto my-2 w-full max-w-[380px] sm:max-w-[420px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2 sm:p-2.5 bg-gradient-to-b from-pink-50 to-rose-100 shadow-[0_12px_36px_rgba(219,39,119,0.14)] ring-1 ring-pink-200/70">
+        {/* Scratch Card Frame - perfectly balanced width and height */}
+        <div className="relative mx-auto my-2 w-full max-w-[320px] sm:max-w-[370px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2 sm:p-2.5 bg-gradient-to-b from-pink-50 to-rose-100 shadow-[0_12px_36px_rgba(219,39,119,0.14)] ring-1 ring-pink-200/70">
           <div
             ref={containerRef}
             className="relative w-full h-full rounded-2xl overflow-hidden select-none bg-rose-950"

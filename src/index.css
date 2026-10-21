@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FFFDFB;
+    color: #4A1525;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-serif-love {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive;
+}
+
+.font-sans-love {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Custom romantic ripple & float animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes ripple-pulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple-pulse 8s ease-in-out infinite;
+}
+
+/* Canvas cursor styling */
+.cursor-coin {
+  cursor: grab;
+}
+.cursor-coin:active {
+  cursor: grabbing;
+}
+
+/* Lined stationery paper effect matching screenshot */
+.lined-paper {
+  background-color: #FDF9F7;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 39px,
+    #F3E2E8 39px,
+    #F3E2E8 40px
+  );
+  line-height: 40px;
+}
+
+/* Custom wine scrollbar matching screenshot */
+.romantic-scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+.romantic-scrollbar::-webkit-scrollbar-track {
+  background: #FCE8EE;
+  border-radius: 9999px;
+}
+.romantic-scrollbar::-webkit-scrollbar-thumb {
+  background: #8B0F3E;
+  border-radius: 9999px;
+}
+.romantic-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6B0A2F;
+}
+

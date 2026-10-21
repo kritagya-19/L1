@@ -1,0 +1,6 @@
+{
+  "name": "Your Love Page - A Little Love Note",
+  "description": "An emotional, romantic interactive love page with customizable memories, scratch-to-reveal photos, ambient music, and sweet heartfelt notes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

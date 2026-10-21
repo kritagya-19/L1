@@ -17,7 +17,7 @@ const DEFAULT_PLAYLIST: LoveSong[] = [
     id: 'song-1',
     title: 'Until I Found You',
     artist: 'Stephen Sanchez',
-    youtubeId: 'GxldQ9GyXfY',
+    youtubeId: 'iGskhOXVg2U',
     duration: '2:57',
     memoryNote: 'Playing softly in the car the night we drove along the coastline and neither of us wanted the road to end.',
     vinylColor: '#BE185D',
@@ -64,6 +64,23 @@ export const SongsRemindOfYouSection: React.FC<SongsRemindOfYouProps> = ({ partn
   const [customArtist, setCustomArtist] = useState('');
   const [customYoutubeUrl, setCustomYoutubeUrl] = useState('');
   const [customNote, setCustomNote] = useState('');
+
+  React.useEffect(() => {
+    if (showCustomModal) {
+      const scrollY = window.scrollY;
+      const originalOverflow = document.body.style.overflow;
+      const originalOverscroll = document.body.style.overscrollBehavior;
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.overscrollBehavior = 'none';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        document.body.style.overscrollBehavior = originalOverscroll;
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [showCustomModal]);
 
   const currentSong = playlist[currentSongIndex] || playlist[0];
 
@@ -396,11 +413,11 @@ export const SongsRemindOfYouSection: React.FC<SongsRemindOfYouProps> = ({ partn
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none animate-fade-in"
           onClick={() => setShowCustomModal(false)}
         >
           <div
-            className="bg-[#FFFDFB] rounded-[32px] p-6 sm:p-8 max-w-md w-full shadow-2xl border border-pink-200 text-slate-800 animate-scale-up"
+            className="bg-[#FFFDFB] rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 max-w-md w-full shadow-2xl border border-pink-200 text-slate-800 animate-scale-up my-auto max-h-[88vh] overflow-y-auto romantic-scrollbar overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-4 border-b border-pink-200/80 mb-5">
